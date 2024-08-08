@@ -2,6 +2,9 @@ FROM debian:stable
 
 RUN groupadd -r node && useradd -m -g node node
 
+# Gosu
+ENV GOSU_VERSION 1.10
+
 # build directories
 ENV APP_SOURCE_DIR /opt/meteor/src
 ENV APP_BUNDLE_DIR /opt/meteor/dist
