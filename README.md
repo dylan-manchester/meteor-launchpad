@@ -28,7 +28,7 @@ node_modules
 ### Run
 
 Now you can run your container with the following command...
-(note that the app listens on port 3000 because it is run by a non-root user for [security reasons](https://github.com/nodejs/docker-node/issues/1) and [non-root users can't run processes on port 80](https://stackoverflow.com/questions/16573668/best-practices-when-running-node-js-with-port-80-ubuntu-linode))
+(note that the app listens on port 3000 because it is run by a non-root user for [security reasons](https://github.com/nodejs/docker-node/issues/1) and [non-root users can't run processes on port 80](http://stackoverflow.com/questions/16573668/best-practices-when-running-node-js-with-port-80-ubuntu-linode))
 
 ```sh
 docker run -d \
@@ -98,7 +98,7 @@ docker build \
 
 ## Installing Private NPM Packages
 
-You can provide your [NPM auth token](https://blog.npmjs.org/post/118393368555/deploying-with-npm-private-modules) with the `NPM_TOKEN` build arg.
+You can provide your [NPM auth token](http://blog.npmjs.org/post/118393368555/deploying-with-npm-private-modules) with the `NPM_TOKEN` build arg.
 
 ```sh
 docker build --build-arg NPM_TOKEN="<your token>" -t myorg/myapp:latest .

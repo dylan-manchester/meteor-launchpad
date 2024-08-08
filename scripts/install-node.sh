@@ -11,7 +11,7 @@ printf "\n[-] Installing Node ${NODE_VERSION}...\n\n"
 NODE_DIST=node-v${NODE_VERSION}-linux-x64
 
 cd /tmp
-curl --retry 20 --retry-delay 10 -O -L https://nodejs.org/dist/v${NODE_VERSION}/${NODE_DIST}.tar.gz
+curl --retry 5 --retry-delay 5 -O -L http://nodejs.org/dist/v${NODE_VERSION}/${NODE_DIST}.tar.gz
 tar xzf ${NODE_DIST}.tar.gz >/dev/null 2>&1
 rm ${NODE_DIST}.tar.gz
 rm -rf /opt/nodejs
