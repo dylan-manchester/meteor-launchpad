@@ -11,7 +11,7 @@ apt-get update
 # ensure we can get an https apt source if redirected
 # https://github.com/jshimko/meteor-launchpad/issues/50
 
-apt-get install -y --no-install-recommends apt-transport-https ca-certificates curl bzip2 libarchive-tools build-essential git gpg gnupg2 gosu
+apt-get install -y --no-install-recommends apt-transport-https ca-certificates curl bzip2 bsdtar build-essential git gpg gnupg2 gosu
 
 ### Conda
 # Install our public GPG key to trusted store
