@@ -1,6 +1,5 @@
+[![Circle CI](https://circleci.com/gh/jshimko/meteor-launchpad/tree/master.svg?style=svg)](https://circleci.com/gh/jshimko/meteor-launchpad/tree/master)
 # Meteor Launchpad - Base Docker Image for Meteor Apps
-
-Based on https://github.com/jshimko/meteor-launchpad
 
 ### Build
 
@@ -56,7 +55,7 @@ docker run -d \
 
 ### Build Options
 
-Meteor Launchpad supports setting custom build options in one of two ways.  You can either create a launchpad.conf config file in the root of your app or you can use [Docker build args](https://docs.docker.com/engine/reference/builder/#arg).  The currently supported options are to install any list of `apt-get` dependencies (Meteor Launchpad is built on `debian:jesse`).  
+Meteor Launchpad supports setting custom build options in one of two ways.  You can either create a launchpad.conf config file in the root of your app or you can use [Docker build args](https://docs.docker.com/engine/reference/builder/#arg).  The currently supported options are to install PhantomJS, GraphicsMagick, MongoDB, or any list of `apt-get` dependencies (Meteor Launchpad is built on `debian:jesse`).  
 
 If you choose to install Mongo, you can use it by _not_ supplying a `MONGO_URL` when you run your app container.  The startup script will then start Mongo inside the container and tell your app to use it.  If you _do_ supply a `MONGO_URL`, Mongo will not be started inside the container and the external database will be used instead.
 
@@ -71,8 +70,18 @@ To use any of them, create a `launchpad.conf` in the root of your app and add an
 ```sh
 # launchpad.conf
 
+# Use apt-get to install any additional dependencies
+# that you need before your building/running your app
+# (default: undefined)
+APT_GET_INSTALL="curl git wget"
+
 # Install a custom Node version (default: latest 8.x)
 NODE_VERSION=8.9.0
+
+# Installs the latest version of each (default: all false)
+INSTALL_MONGO=true
+INSTALL_PHANTOMJS=true
+INSTALL_GRAPHICSMAGICK=true
 ```
 
 **Option #2 - Docker Build Args**
@@ -81,6 +90,8 @@ If you prefer not to have a config file in your project, your other option is to
 
 ```sh
 docker build \
+  --build-arg APT_GET_INSTALL="curl git wget" \
+  --build-arg INSTALL_MONGO=true \
   --build-arg NODE_VERSION=8.9.0 \
   -t myorg/myapp:latest .
 ```

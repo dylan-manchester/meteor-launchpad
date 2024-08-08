@@ -11,7 +11,6 @@ printf "\n[-] Installing Node ${NODE_VERSION}...\n\n"
 NODE_DIST=node-v${NODE_VERSION}-linux-x64
 
 cd /tmp
-# High retry times because nodejs.org often has issues with their CDN
 curl --retry 20 --retry-delay 10 -O -L https://nodejs.org/dist/v${NODE_VERSION}/${NODE_DIST}.tar.gz
 tar xzf ${NODE_DIST}.tar.gz >/dev/null 2>&1
 rm ${NODE_DIST}.tar.gz
